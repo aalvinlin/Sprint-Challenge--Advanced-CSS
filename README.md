@@ -34,13 +34,36 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the difference between an adaptive website and a fully responsive website?
 
+    An adaptive website has hard-coded layout widths for different media queries, while a responsive layout uses responsive units along with media queries.
+
+    For example, an adaptive website might set an image’s dimensions to 1000x600 for the desktop version of the site, 800x480 for the tablet version of the site, and 400x240 for the mobile version of the site. All desktop screen sizes will see the image as 1000 pixels wide, no matter if the actual desktop size is 1280 or 4096 pixels wide. The layout will have a consistent look among all desktop screen sizes, but there will be whitespace around the layout to account for differences in screen sizes.
+
+    A responsive layout uses media queries but uses proportional widths such as rems and percentages instead of pixels. As a result, content will grow and shrink according to the size of the viewport window. The result is a smoother transition between screen sizes within a screen size breakpoint: images and fonts on the desktop version will gradually shrink until the tablet breakpoint is reached.
+
 2. Describe what it means to be mobile first vs desktop first.
+
+    A site that is developed mobile-first aims to have a layout that is intended for mobile devices. The HTML and CSS will reflect this design choice. Later, tablet and desktop versions can be created by appending additional CSS rules with media queries using min-width. For example, a tablet layout may be specified with @media (min-width: 800px) {…}. Such rules will only apply when the screen size is 800 pixels or greater.
+
+    In contrast, a desktop-first site will have HTML and CSS coded for the desktop version of the site initially. Later CSS media queries will specify changes for smaller screens, such as using a single column for content instead of multiple columns. These media queries are invoked using max-width rather than min-width, so that only screens up to a certain size will receive those CSS rules.
 
 3. What does `font-size: 62.5%` in the `html` tag do for us when using `rem` units?
 
+    Most browsers have 16px as the default font size, so setting the font size to 62.5% of the default will reset the default to 10px. Since rem units are based upon the base font size, which is now 10px, calculations become easier: the actual font size is 10x the rem unit. A font size of 2.4rem is equivalent to 24px, and a font size of 3rem is equivalent to 30px.
+
 4. How would you describe preprocessing to someone new to CSS?
 
+    Preprocessing is a way of making CSS code easier to develop. By itself, CSS does not have support for variables, functions, or other features common to programming languages, but these features are available if you first write CSS in a different language and then use a compiler to translate it into regular CSS.
+
+    Preprocessing allows for better data abstraction. For example, if a site has a color palette with the values #FFCC39, #3DFE12, and #625B9C, rather than specifying these hex values over and over again, one can use the preprocessing language Less to set @border-color: #FFCC39, @background-color: #625B9C, and @text-color: #3DFE12. A developer then does not need to worry about typos in typing hex values nor the meaning and purpose of each color. Consequently, changing the color of the border only requires editing a single value in Less rather than changing all the values in CSS.
+
+    Preprocessing also allows for better code reusability. A frequently-used set of code such as browser prefixes or flexbox specifications can be enclosed within a mixin, which is similar to functions in programming languages. Instead of repeating the same lines of code in CSS every time, a mixin can be called, which will output its CSS contents into the place it is called from. Once again, changing this repeated code everywhere it is called only requires updating the preprocessor code once.
+
 5. What is your favorite concept in preprocessing? What is the concept that gives you the most trouble?
+
+    My favorite concept is nesting because it has allowed me to develop CSS code much faster than before. In the past, I would often spend time diagnosing specificity errors in CSS. With nesting, the Less code follows the same structure as the HTML code, and I can have media queries right next to the original CSS to compare.
+
+    The only concept that has given me trouble so far is getting less-watch-compiler to work, as the instructions in the lectures and training kits didn’t work until the TLs gave me some additional instructions.
+
 
 You are expected to be able to answer all these questions. Your responses contribute to your Sprint Challenge grade. Skipping this section *will* prevent you from passing this challenge.
 
@@ -66,11 +89,11 @@ Follow these steps for completing your project.
 
 ### Preprocessor Set up
 
-* [ ] Verify that you have LESS installed correctly by running `lessc -v` in your terminal, if you don't get a version message back, reach out to your project manager for help.
-* [ ] Open your terminal and navigate to your preprocessing project by using the `cd` command
-* [ ] Once in your project's root folder, run the following command `less-watch-compiler less css index.less`
-* [ ] Verify your compiler is working correctly by changing the `background-color` on the `html` selector to `red` in your `index.less` file.
-* [ ] Once you see the red screen, you can delete that style and you're ready to start on the next task
+* [*] Verify that you have LESS installed correctly by running `lessc -v` in your terminal, if you don't get a version message back, reach out to your project manager for help.
+* [*] Open your terminal and navigate to your preprocessing project by using the `cd` command
+* [*] Once in your project's root folder, run the following command `less-watch-compiler less css index.less`
+* [*] Verify your compiler is working correctly by changing the `background-color` on the `html` selector to `red` in your `index.less` file.
+* [*] Once you see the red screen, you can delete that style and you're ready to start on the next task
 
 ## Minimum Viable Product
 
@@ -78,7 +101,7 @@ Your finished project must include all of the following requirements:
 
 ### Import LESS Files
 
-* [ ] Navigate to your `index.less` file. Notice the file is blank. You have been asked to use a certain import order. That order is as follows:
+* [*] Navigate to your `index.less` file. Notice the file is blank. You have been asked to use a certain import order. That order is as follows:
 
 ```markdown
 1.variables.less

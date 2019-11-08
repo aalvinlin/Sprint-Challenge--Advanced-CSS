@@ -6,13 +6,24 @@ header {
 
     nav {
     
-        width: 50%;
+        width: 100%;
 
         .display_flex(center, center);
         
+        @media @phone {
+            .display_flex(space-around, center);
+            width: 90%;
+        }
+
         a {
             display: inline-block;
-            width: 25%;
+            
+            padding: 0 2%;
+                
+            @media @phone {
+                font-size: 1.2rem;
+                padding: 0 2%;
+            }
 
             font-size: 1.5rem;
             line-height: 2.5em;

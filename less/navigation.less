@@ -1,1 +1,28 @@
 // Navigation code here
+
+header {
+    .display_flex(center, center);
+    flex-direction: column;
+
+    nav {
+    
+        width: 50%;
+
+        .display_flex(center, center);
+        
+        a {
+            display: inline-block;
+            width: 25%;
+
+            font-size: 1.5rem;
+            line-height: 2.5em;
+
+            text-decoration: none;
+            text-align: center;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

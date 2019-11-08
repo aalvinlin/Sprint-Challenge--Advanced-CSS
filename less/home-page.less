@@ -58,6 +58,32 @@
       }
 
       .btn {
+        width: 25%;
+        
+        a {
+
+          width: 100%;
+
+          text-align: center;
+          display: inline-block;
+
+          line-height: 3rem;
+          font-size: 1.5rem;
+          text-decoration: none;
+
+          border-radius: 5px;
+
+          .button_color(@btn-text-color, @btn-bg-color);
+          
+          &:hover {
+            
+            .button_color(@btn-bg-color, @btn-text-color);
+
+          }
+
+        }
+
+
       }
     }
 
